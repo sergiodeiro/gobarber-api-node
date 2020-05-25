@@ -33,7 +33,6 @@ class DiskStorageProvider implements IStorageProvider {
         ACL: 'public-read',
         Body: fileContent,
         ContentType,
-        ContentDisposition: `inline; filename=${file}`,
       })
       .promise();
 
