@@ -42,7 +42,7 @@ class ListProviderMonthAvailabilityService {
     );
 
     const availability = eachDayArray.map(day => {
-      const comapreDate = new Date(year, month - 1, day, 23, 59, 59);
+      const compareDate = new Date(year, month - 1, day, 23, 59, 59);
 
       const appointmentsInDay = appointments.filter(appointment => {
         return getDate(appointment.date) === day;
@@ -51,7 +51,8 @@ class ListProviderMonthAvailabilityService {
       return {
         day,
         available:
-          isAfter(comapreDate, new Date()) && appointmentsInDay.length < 10,
+          isAfter(compareDate, new Date(Date.now())) &&
+          appointmentsInDay.length < 10,
       };
     });
 
